@@ -2,18 +2,18 @@
 
 // The computers choice
 function getComputerChoice() {
-    let choices = ["Rock", "Paper", "Scissors"];
+    let choices = ["rock", "paper", "scissors"];
     let randomChoice = Math.floor(Math.random() * choices.length)
     return choices[randomChoice]
 }
 
 // Goes through a round of the game and builds the logic of which choices win
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == "Rock" && computerSelection == "Paper" ) {
+    if (playerSelection == "rock" && computerSelection == "paper" ) {
         return computerSelection + " beats " + playerSelection + ", you lose!"
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+    } else if (playerSelection == "paper" && computerSelection == "scissors") {
         return computerSelection + " beats " + playerSelection + ", you lose!"
-    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+    } else if (playerSelection == "scissors" && computerSelection == "rock") {
         return computerSelection + " beats " + playerSelection + ", you lose!"
     } else if (playerSelection == computerSelection) {
         return "You have both chosen " + playerSelection + ". Keep playing!"
@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
 //Main execution of the game
 function main() {
     computerChoice = getComputerChoice();
-    playerChoice = prompt("Rock, paper or scissors? ")
+    playerChoice = prompt("Rock, paper or scissors? ").toLowerCase()
     round = playRound(playerChoice, computerChoice)
     return round
 }
