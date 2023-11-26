@@ -23,6 +23,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Carries out the logic of scoring in the game
 function game(playerSelection, computerSelection) {
     let computerScore = 0;
     let playerScore = 0;
@@ -30,15 +31,35 @@ function game(playerSelection, computerSelection) {
     while (playerScore < 5 || computerScore < 5) {
         if (roundWinner == computerSelection + " beats " + playerSelection + ", you lose!" ) {
             computerScore++;
-            return [playerScore,computerScore];
+            //return [playerScore,computerScore];
         } else if (roundWinner == playerSelection + " beats " + computerSelection + ", you win!") {
             playerScore++;
-            return [playerScore, computerScore];
+            //return [playerScore, computerScore];
         } else {
-            return [playerScore, computerScore];
+            message = "carry on"
+            return message
+            //return [playerScore, computerScore];
         }
+        return [playerScore, computerScore]
     }
 }
+
+// Determines if the game should continue
+
+function continueGame(playerScore, computerScore) {
+    if (playerScore > 5) {
+        let continueGame = False;
+        let message = "You're the winner!";
+        return message
+    } else if (computerScore > 5) {
+        let continueGame = False;
+        let message = "You Lost. Better luck next time!"
+        return message
+    } else {
+        let continueGame = True;
+    }
+    return continueGame;
+} 
 //Main execution of the game
 function main() {
     let computerChoice = getComputerChoice();
