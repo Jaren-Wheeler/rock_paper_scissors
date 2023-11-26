@@ -9,6 +9,7 @@ function getComputerChoice() {
 
 // Goes through a round of the game and builds the logic of which choices win
 function playRound(playerSelection, computerSelection) {
+
     if (playerSelection == "rock" && computerSelection == "paper" ) {
         return computerSelection + " beats " + playerSelection + ", you lose!"
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
@@ -22,13 +23,30 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
+function game(playerSelection, computerSelection) {
+    let computerScore = 0;
+    let playerScore = 0;
+    let roundWinner = playRound(playerSelection, computerSelection)
+    while (playerScore < 5 || computerScore < 5) {
+        if (roundWinner == computerSelection + " beats " + playerSelection + ", you lose!" ) {
+            computerScore++;
+            return [playerScore,computerScore];
+        } else if (roundWinner == playerSelection + " beats " + computerSelection + ", you win!") {
+            playerScore++;
+            return [playerScore, computerScore];
+        } else {
+            return [playerScore, computerScore];
+        }
+    }
+}
 //Main execution of the game
 function main() {
-    computerChoice = getComputerChoice();
-    playerChoice = prompt("Rock, paper or scissors? ").toLowerCase()
-    round = playRound(playerChoice, computerChoice)
-    return round
+    let computerChoice = getComputerChoice();
+    let playerChoice = prompt("Rock, paper or scissors? ").toLowerCase();
+    let round = playRound(playerChoice, computerChoice);
+    let [playerScore, computerScore] = game(playerChoice, computerChoice);
+    console.log("The computer has " + computerScore + " points and you have " + playerScore);
+    console.log(round);
 }
 
 main()
